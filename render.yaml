@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: wabot
-    env: docker
-    region: singapore
-    plan: free
-    branch: main
-    repo: https://github.com/Andhinee/wabot

@@ -1,28 +1,20 @@
-# WhatsApp Chatbot (Menu Based)
+# WhatsApp Chatbot (QR Code Method)
 
-A simple, rule-based WhatsApp chatbot that replies with a numbered menu. Built with Node.js, Express, and WhatsApp Cloud API.
+Bot WhatsApp otomatis berbasis menu, menggunakan `whatsapp-web.js`.
+Bot ini bertindak seperti WhatsApp Web. Chat pribadi Anda tetap aman dan nomor tidak mati.
 
-## Features
-- **Auto-Reply**: Automatically responds to incoming messages.
-- **Menu System**: Users reply with numbers (1, 2, 3...) to get specific information.
-- **Easy to Edit**: Menu content is stored in `messageHandler.js` for easy updates.
+## Cara Kerja
+1.  Server menjalankan browser Chrome virtual.
+2.  Server menampilkan QR Code.
+3.  Anda scan QR Code pakai HP (Menu Linked Devices).
+4.  Bot aktif!
 
-## Project Structure
-- `server.js`: The main server file.
-- `messageHandler.js`: Contains the logic for the menu and responses.
-- `whatsappService.js`: Handles sending messages to WhatsApp.
-- `.env`: Configuration file for API keys.
+## Struktur File
+- `server.js`: Menjalankan klien WhatsApp dan server dummy (agar Render senang).
+- `messageHandler.js`: Logika menu dan balasan otomatis.
+- `Dockerfile`: Konfigurasi sistem untuk Render.
 
-## Quick Start (Local)
-1.  Install dependencies:
-    ```bash
-    npm install
-    ```
-2.  Configure `.env` (see `SETUP_GUIDE.md`).
-3.  Run the server:
-    ```bash
-    node server.js
-    ```
-
-## deployment
-Please refer to `SETUP_GUIDE.md` for detailed steps on how to set up the WhatsApp API and deploy this bot to Render.
+## Instalasi Lokal
+1.  `npm install`
+2.  `node server.js`
+3.  Scan QR code yang muncul di terminal.

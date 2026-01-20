@@ -1,7 +1,4 @@
-const { sendMessage } = require('./whatsappService');
-
 // Define the menu structure
-// You can easily edit this object to change the menu options and answers
 const menuData = {
     start: `Halo! Selamat datang di Layanan Pelanggan Otomatis.
 Silakan balas dengan angka untuk memilih opsi:
@@ -20,23 +17,24 @@ Balas '0' untuk kembali ke menu ini kapan saja.`,
     }
 };
 
-const handleIncomingMessage = async (from, messageBody) => {
-    const incomingText = messageBody.trim();
-
-    let responseText = '';
+const handleIncomingMessage = async (msg) => {
+    const incomingText = msg.body.trim();
 
     // Logic for handling the input
     if (incomingText === '0' || incomingText.toLowerCase() === 'hi' || incomingText.toLowerCase() === 'halo') {
-        responseText = menuData.start;
+        await msg.reply(menuData.start);
     } else if (menuData.options[incomingText]) {
-        responseText = menuData.options[incomingText];
+        await msg.reply(menuData.options[incomingText]);
     } else {
-        responseText = `Maaf, saya tidak mengerti pilihan "${incomingText}".
-` + menuData.start;
-    }
+        // If input is not recognized, you can either ignore it or show the menu again
+        // For personal bot, maybe it's better to NOT reply if not matched (so you can chat manually)
+        // Or reply with a "I don't understand" + Menu
 
-    // Send the response back to the user
-    await sendMessage(from, responseText);
+        // Uncomment this if you want it to be strict:
+        // await msg.reply(`Maaf, saya tidak mengerti pilihan "${incomingText}".\n` + menuData.start);
+
+        // For now, let's keep it silent if unmatched so you can chat manually
+    }
 };
 
 module.exports = {
