@@ -15,8 +15,10 @@ const client = new Client({
 // Generate QR Code
 client.on('qr', (qr) => {
     console.log('QR RECEIVED', qr);
-    qrcode.generate(qr, { small: true });
+    // Generating with standard size (small: false) often renders better in web terminals
+    qrcode.generate(qr, { small: false });
     console.log('Scan the QR code above with your WhatsApp app!');
+    console.log('If the visual QR is broken, copy the longer text "QR RECEIVED..." above and use https://www.qr-code-generator.com/');
 });
 
 // Client is ready
