@@ -29,7 +29,7 @@ const handleIncomingMessage = async (msg) => {
         // If input is not recognized, you can either ignore it or show the menu again
         // For personal bot, maybe it's better to NOT reply if not matched (so you can chat manually)
         // Or reply with a "I don't understand" + Menu
-
+        console.log(`Command ignored/not found: "${incomingText}"`);
         // Uncomment this if you want it to be strict:
         // await msg.reply(`Maaf, saya tidak mengerti pilihan "${incomingText}".\n` + menuData.start);
 
